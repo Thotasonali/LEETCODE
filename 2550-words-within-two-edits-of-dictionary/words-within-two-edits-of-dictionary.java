@@ -15,7 +15,7 @@ class Solution {
 
                 if (diff <= 2) {
                     result.add(q);
-                    break; // no need to check other dictionary words
+                    break; 
                 }
             }
         }
