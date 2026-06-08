@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
@@ -13,6 +15,7 @@ class Solution {
             }
 
             map.put(ch, right);
+
             maxLen = Math.max(maxLen, right - left + 1);
         }
 
