@@ -7,8 +7,6 @@ class Solution {
         SparseTable st = new SparseTable(nums);
 
         PriorityQueue<long[]> pq = new PriorityQueue<>((a, b) -> Long.compare(b[0], a[0]));
-
-        // For every left index, start with the biggest right index: [left...n-1]
         for (int left = 0; left < n; left++) {
             long value = st.rangeMax(left, n - 1) - st.rangeMin(left, n - 1);
             pq.offer(new long[]{value, left, n - 1});
@@ -26,7 +24,7 @@ class Solution {
             ans += value;
             k--;
 
-            // Next distinct subarray for same left: shrink right by 1
+        
             if (right > left) {
                 int newRight = right - 1;
                 long newValue = st.rangeMax(left, newRight) - st.rangeMin(left, newRight);
