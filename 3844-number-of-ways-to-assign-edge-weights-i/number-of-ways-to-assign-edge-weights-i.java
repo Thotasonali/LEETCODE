@@ -1,52 +1,52 @@
-import java.util.*;
-
 class Solution {
     public int assignEdgeWeights(int[][] edges) {
-        // Since it's a tree, number of nodes n = edges.length + 1
-        int n = edges.length + 1;
-        
-        // 1. Create the adjacency list
-        List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i <= n; i++) {
+        //"lets find how depth of nodes"
+        int n =edges.length+1;
+        //"creat adjancy list bfs"
+        List<List<Integer>> adj=new ArrayList<>();
+        //" add ajdacents into"
+        for(int i=0;i<=n;i++){
             adj.add(new ArrayList<>());
+
         }
-        
-        // 2. Add the undirected edges into the list
-        for (int[] edge : edges) {
-            int u = edge[0];
-            int v = edge[1];
+        // adding all onnections mkng tree
+        for(int[] edge: edges){//"edge(1,2) add to empty[] as 1[ as 2 ] 2[as 1] so it makes connected"
+            int u=edge[0];
+            int v=edge[1];
             adj.get(u).add(v);
             adj.get(v).add(u);
         }
-        
-        // 3. Apply BFS to find the maximum depth from root node 1
-        Queue<Integer> qu = new LinkedList<>(); // Fixed capitalization
-        boolean[] visited = new boolean[n + 1];
-        
+        //apply bfs 
+        //queue 
+        Queue<Integer> qu=new LinkedList<>();
+        boolean[] visited = new boolean[n + 1];//al nodes array as not visited
         qu.offer(1);
-        visited[1] = true;
-        
-        int maxDepth = 0; // Declared outside the loop so it's visible everywhere
-        
+        visited[1]=true;//1st node r
+        int maxDepth=0;
+
+        // gng each lvls
         while (!qu.isEmpty()) {
-            int size = qu.size();
+            int size = qu.size(); 
             
-            for (int i = 0; i < size; i++) {
-                int curr = qu.poll();
-                
-                for (int neighbor : adj.get(curr)) {
-                    if (!visited[neighbor]) {
-                        visited[neighbor] = true;
-                        qu.offer(neighbor);
+            // Number of nodes at the current depth level
+            for(int i=0;i<size;i++){
+                int current=qu.poll();
+
+
+                //travel alndzz in this level
+                for(int getneig: adj.get(current)){
+                    if(!visited[getneig]){
+                        visited[getneig]=true;
+                        qu.offer(getneig);
+
                     }
                 }
             }
-            
-            if (!qu.isEmpty()) {
+            if(!qu.isEmpty()){
                 maxDepth++;
             }
+            
         }
-        
         // 4. Calculate the total combinations: (2^(maxDepth - 1)) % (10^9 + 7)
         long MOD = 1_000_000_007;
         long ans = 1;
@@ -59,3 +59,8 @@ class Solution {
         return (int) ans;
     }
 }
+
+
+
+        
+  
