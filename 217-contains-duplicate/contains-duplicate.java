@@ -1,15 +1,40 @@
-
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        Arrays.sort(nums);
+        int size = 1;
 
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == nums[i - 1]) {
-                return true;
+        while (size < nums.length * 4) {
+            size <<= 1;
+        }
+
+        int[] keys = new int[size];
+        boolean[] used = new boolean[size];
+        int mask = size - 1;
+
+        for (int num : nums) {
+            int idx = hash(num) & mask;
+
+            while (used[idx]) {
+                if (keys[idx] == num) {
+                    return true;
+                }
+
+                idx = (idx + 1) & mask;
             }
+
+            used[idx] = true;
+            keys[idx] = num;
         }
 
         return false;
+    }
+
+    private int hash(int x) {
+        x ^= x >>> 16;
+        x *= 0x7feb352d;
+        x ^= x >>> 15;
+        x *= 0x846ca68b;
+        x ^= x >>> 16;
+        return x;
     }
 }
 /*class Solution {
