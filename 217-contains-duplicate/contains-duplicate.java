@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
     public boolean containsDuplicate(int[] nums) {
         int size = 1;
 
@@ -36,8 +36,8 @@ class Solution {
         x ^= x >>> 16;
         return x;
     }
-}
-/*class Solution {
+}*/
+class Solution {
     public boolean containsDuplicate(int[] nums) {
         Set<Integer> check=new HashSet<>();
         for(int num:nums ){
@@ -54,4 +54,3 @@ class Solution {
         
     }
 }
-*/
