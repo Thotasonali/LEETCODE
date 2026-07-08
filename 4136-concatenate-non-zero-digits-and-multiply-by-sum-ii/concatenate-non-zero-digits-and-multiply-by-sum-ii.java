@@ -3,11 +3,10 @@ class Solution {
         int MOD = 1_000_000_007;
         int n = s.length();
 
-        int[] count = new int[n + 1];     // number of non-zero digits
-        long[] sum = new long[n + 1];     // sum of non-zero digits
-        long[] value = new long[n + 1];   // concatenated non-zero number mod MOD
-        long[] pow10 = new long[n + 1];   // powers of 10 mod MOD
-
+        int[] count = new int[n + 1];    
+        long[] sum = new long[n + 1];     
+        long[] value = new long[n + 1];  
+        long[] pow10 = new long[n + 1];   
         pow10[0] = 1;
 
         for (int i = 0; i < n; i++) {
