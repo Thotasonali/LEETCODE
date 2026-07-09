@@ -5,8 +5,8 @@ class Solution {
         for(int i=0;i<jewels.length();i++){
             jew.add(jewels.charAt(i));
         }
-        for(char c: stones.toCharArray()){
-            if(jew.contains(c)){
+        for(int i=0;i<stones.length();i++){
+            if(jew.contains(stones.charAt(i))){
                 count++;
             }
         }
