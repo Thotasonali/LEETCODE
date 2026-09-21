@@ -4,9 +4,9 @@ class Solution:
         
         group=defaultdict(list)
         for s in strs:
-            ls=s.lower()
+            
             key=[0]*26
-            for c in ls:
+            for c in s.lower():
                 key[ord(c)-97]+=1
             group[tuple(key)].append(s)
 
