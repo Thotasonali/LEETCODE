@@ -11,11 +11,11 @@ class Solution:
             summ=numbers[i]+numbers[j]
             if (summ)>target:
                 j-=1
-                summ=0
+              
                 
             elif(summ<target) :
                 i+=1
-                summ==0
+               
             else:
                 return [i+1,j+1]
         
