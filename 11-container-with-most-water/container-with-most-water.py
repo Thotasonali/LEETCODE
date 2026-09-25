@@ -5,7 +5,7 @@ class Solution:
         right=n-1
         max_area = float("-inf")
         #here we will compare hei
-        if(n<=1): return[]
+        if(n<=1): return 0
 
         while(left>=0 and right <n):
             level=min(height[left],height[right])
